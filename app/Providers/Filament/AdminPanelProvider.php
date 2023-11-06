@@ -2,10 +2,12 @@
 
 namespace App\Providers\Filament;
 
+use Althinect\FilamentSpatieRolesPermissions\FilamentSpatieRolesPermissionsPlugin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Navigation\MenuItem;
+use Filament\Navigation\NavigationGroup;
 use Filament\Navigation\NavigationItem;
 use Filament\Pages;
 use Filament\Panel;
@@ -42,8 +44,12 @@ class AdminPanelProvider extends PanelProvider
                     ->url('https://myblog.com', shouldOpenInNewTab: true)
                     ->icon('heroicon-o-pencil-square')
                     ->group('External')
-                    ->sort(2)
 //                    ->hidden(fn(): bool => auth()->user()->can('view')) // conditionally show or hide the menu item
+            ])
+            ->navigationGroups([
+                'Shop',
+                'Roles and Permissions',
+                'External',
             ])
             ->userMenuItems([
                 MenuItem::make()
@@ -54,6 +60,7 @@ class AdminPanelProvider extends PanelProvider
             ])
 //            ->breadcrumbs(false)
             ->plugins([
+                FilamentSpatieRolesPermissionsPlugin::make(),
                 SpotlightPlugin::make()
             ])
             ->font("Poppins")
