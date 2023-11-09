@@ -24,6 +24,8 @@ class BrandResource extends Resource
 
     protected static ?string $navigationGroup = 'Shop';
 
+
+
     public static function form(Form $form): Form
     {
         return $form

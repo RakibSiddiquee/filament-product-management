@@ -26,7 +26,7 @@ class CustomerResource extends Resource
 
     public static function getEloquentQuery(): Builder
     {
-        return parent::getEloquentQuery()->select(['id', 'name', 'email', 'phone', 'city', 'date_of_birth']);
+        return parent::getEloquentQuery()->select(['id', 'name', 'email', 'phone', 'city', 'date_of_birth', 'zip_code', 'address']);
     }
 
     public static function form(Form $form): Form
